@@ -1,3 +1,8 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
 int getPlayerInput(char board[6][7], bool hasAnvil, bool &playedAnvil)
 {
     playedAnvil = false;
