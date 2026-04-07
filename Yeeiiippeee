@@ -1,0 +1,299 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+const int ROWS = 6;
+const int COLS = 7;
+
+enum class Cell { Empty, player1, player2, anvil1, anvil2 };
+using Board = vector<vector<Cell>>;
+
+// Game display (title screen, )
+
+void printTitleScreen()
+{
+    cout << " _______________________________________________________________________________\n";
+    cout << "   ______                            __     __ __      ______  __           __  \n";
+    cout << "  / ____/___  ____  ____  ___  _____/ /_   / // /    _/_/ __ \\/ /_  _______/ /  \n";
+    cout << " / /   / __ \\/ __ \\/ __ \\/ _ \\/ ___/ __/  / // /_   / // /_/ / / / / / ___/ /\n";
+    cout << "/ /___/ /_/ / / / / / / /  __/ /__/ /_   /__  __/  / // ____/ / /_/ (__  )_/\n";
+    cout << "\\____/\\____/_/ /_/_/ /_/\\___/\\___/\\__/     /_/    / //_/   /_/\\__,_/____(_)  \n";
+    cout << "________________________________________________________________________________\n";
+    cout << "\n";
+    cout << "                                (1) Start Game\n";
+    cout << "                                (2) How to Play\n ";
+    cout << "                               (3) The Anvil Piece\n ";
+    cout << " Select an Option: ";
+
+
+    int choice;  
+    while (true)
+    {
+        cin >> choice;
+        if (cin.fail()) 
+        {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Invalid choice, please try again: ";
+            continue;
+        }
+
+        if (choice == 1) 
+        {
+            break;
+        }
+
+        else if (choice == 2)
+        {
+            cout << "\nGame Instructions: \n";
+            cout << "  - Players take turns dropping pieces into a 7-column, 6-row grid\n";
+            cout << "  - First to connect 4 pieces in a row wins\n";
+            cout << "  - 4 in a row can be horizontal, vertical, or diagonal\n";
+            cout << "  - If the board fills up without a winner, it's a tie\n";
+
+            cout << "\n(1) Start Game\n";
+            cout << "(2) How to Play\n";
+            cout << "(3) The Anvil Piece\n";
+            cout << "Select an Option: ";
+        }
+        else if (choice == 3)
+        {
+            cout << "\n The Anvil Piece: \n";
+            cout << "  - Each player gets one anvil per game\n";
+            cout << "  - Dropping an anvil destroys all pieces in that column\n";
+            cout << "  - The anvil then sits at the bottom of the column\n";
+            cout << "  - You cannot drop an anvil in a full column\n";
+            cout << "  - Type 'a' on your turn to use your anvil\n";
+
+            cout << "\n(1) Start Game\n";
+            cout << "(2) How to Play\n";
+            cout << "(3) The Anvil Piece\n";
+            cout << "Select an Option: ";
+        }
+        else 
+        {
+            cout << "Invalid choice, please try again: ";
+            continue;
+        }
+    }
+}
+
+// starting game 
+void gameSetup(string &name1, string &name2, bool &vsComputer, int &firstPlayer) 
+{
+    cout << "\nSelect Opponent:\n";
+    cout << "   (1) Another Player\n";
+    cout << "   (2) Computer\n";
+
+    int choice;
+    while (true) 
+    {
+        cin >> choice;
+        if (cin.fail()) 
+        {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Invalid choice, please enter 1 or 2: ";
+        }   
+        else if (choice == 1 || choice == 2) 
+        {
+        break;
+        }
+        else 
+        {
+        cout << "Invalid choice, please enter 1 or 2: ";
+        }
+    }
+
+    vsComputer = (choice == 2);
+
+    cout << "Enter Player 1 name: ";
+    cin >> name1;
+    if (vsComputer)
+        name2 = "Computer";
+    else 
+    {
+        cout << "Enter Player 2 name: ";
+        cin >> name2;
+    }
+
+    
+    cout << "Who would like to go first? (1) " << name1 << " (2) " << name2 << " (3) Random: ";
+    while (true) 
+    {
+        cin >> firstPlayer;
+        if (cin.fail()) 
+        {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Invalid choice, please enter 1, 2, or 3: ";
+        } 
+        else if (firstPlayer == 1 || firstPlayer == 2 || firstPlayer == 3) 
+        {
+            break;
+        } 
+        else 
+        {
+            cout << "Invalid choice, please enter 1, 2, or 3: ";
+        }
+
+    }
+
+    if (firstPlayer == 3) 
+    {
+        srand(time(0));
+        firstPlayer = (rand() % 2) + 1;
+    }
+}
+
+// Board: 
+string getPieceRow(Cell cell, int line)
+{
+    if (cell == Cell::player1)
+    {
+        return "|xxx";
+    }
+    else if (cell == Cell::player2)
+    {
+        return "|yyy";
+    }
+    else if (cell == Cell::anvil1 || cell == Cell::anvil2)
+    {
+        if (line == 1) return "|xAx";
+        else           return "|xxx";
+    }
+    else
+    {
+        return "|...";
+    }
+}
+
+void printBoard(const Board& board)
+{
+    cout << "\n  1   2   3   4   5   6   7\n";
+
+    for (int row = 0; row < ROWS; row++)
+    {
+        for (int line = 0; line < 3; line++)
+        {
+            for (int col = 0; col < COLS; col++)
+            {
+                cout << getPieceRow(board[row][col], line);
+            }
+            cout << "|\n";
+        }
+    }
+}
+
+// Input and Validation
+// Help --> lookd up info about stoi and was recommended to use
+
+int getPlayerInput(const Board& board, bool hasAnvil, bool &playedAnvil)
+{
+    playedAnvil = false;
+    string input;
+
+    while (true)
+    {
+        if (hasAnvil)
+        {
+            cout << "Enter a column (1-7) or 'a' for anvil: ";
+        }
+        else 
+        {
+            cout << "Enter a column (1-7): ";
+        }
+
+        cin >> input;
+
+        if (hasAnvil && input == "a")
+        {
+            playedAnvil = true;
+            cout << "Enter a column for the anvil (1-7): ";
+            cin >> input;
+        }
+        
+        int col; 
+
+        try
+        {
+            // stoi converts the string input to an integer since both "a" 
+            // and numbers are read as strings from the same cin
+            col = stoi(input) - 1;
+        }
+
+        catch (...) {
+            cout << "Invalid input, please try again.\n";
+            continue;
+        }
+
+        if (col < 0 || col > 6) 
+        {
+            cout << "Invalid input, please try again.\n";
+        } 
+        else if (!playedAnvil && board[0][col] != Cell::Empty) 
+        {
+            cout << "Column is full, please try again.\n";
+        } 
+        else 
+        {
+            return col;
+        }
+    }
+}
+
+//Game loop 
+void gameLoop(Board& board, string name1, string name2, bool vsComputer, int firstPlayer)
+{
+    int currentPlayer = firstPlayer;
+
+    while (true)
+    {
+        printBoard(board);
+
+        string currentName = (currentPlayer == 1) ? name1 : name2;
+        cout << currentName << "'s turn.\n";
+
+        bool playedAnvil = false;
+        bool hasAnvil = true;
+        int col = getPlayerInput(board, hasAnvil, playedAnvil);
+
+        currentPlayer = (currentPlayer == 1) ? 2 : 1;
+    }
+
+    // add drop piece and check win
+    
+    // switch player
+    currentPlayer = (currentPlayer == 1) ? 2 : 1;
+
+// Play again loop:
+
+    while (true) 
+    {
+        cout << "Would you like to play again? (y/n): ";
+        char answer;
+        cin >> answer;
+        if (answer == 'y' || answer == 'Y') 
+        {
+            board = make_board();
+            currentPlayer = firstPlayer;
+            gameLoop(board, name1, name2, vsComputer, firstPlayer);
+            break;
+        } 
+        else if (answer == 'n' || answer == 'N') 
+        {
+            cout << "Thanks for playing!\n";
+            break;
+        }
+        else 
+        {
+            cout << "Invalid choice, please enter y or n: ";
+        }
+    }
+}
+
+
