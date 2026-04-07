@@ -208,7 +208,7 @@ int minimax(Board board,
             drop (next, c, current_player);
             int val = minimax (next, depth - 1, alpha, beta, true, next_player, comp_player);
             best = min(best, val);
-            beta = min(alpha, val);
+            beta = min(beta, val);
             if (alpha >= beta){
                 break;
             }
