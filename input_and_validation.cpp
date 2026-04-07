@@ -1,28 +1,54 @@
-int getPlayerInput (char board[6][7])
+int getPlayerInput(char board[6][7], bool hasAnvil, bool &playedAnvil)
 {
-    int col;
+    playedAnvil = false;
+    string input;
+
     while (true)
     {
-        cout << "Enter a column 1-7: ";
-        cin >> col;
-        col--;
+        if (hasAnvil)
+        {
+            cout << "Enter a column (1-7) or 'a' for anvil: ";
+        }
+        else 
+        {
+            cout << "Enter a column (1-7): ";
+        }
 
-        if (cin.fail())
+        cin >> input;
+
+        if (hasAnvil && input == "a")
         {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Invalid input, plz try again.\n ";
+            playedAnvil = true;
+            cout << "Enter a column for the anvil (1-7): ";
+            cin >> input;
         }
-        else if (col <0 || col >6)
+        
+        int col; 
+
+        try
         {
-            cout << "Invalid input, plz try again.\n ";
+            // stoi converts the string input to an integer since both "a" 
+            // and numbers are read as strings from the same cin
+            col = stoi(input)- 1;
         }
-        else if (board[0][col] != '.')
+
+        catch (...) {
+            cout << "Invalid input, please try again.\n";
+            continue;
+        }
+
+        if (col < 0 || col > 6) 
         {
-            cout << "This column is full! Select a new one.\n ";
-        }
+            cout << "Invalid input, please try again.\n";
+        } 
+        else if (!playedAnvil && board[0][col] != '.') 
+        {
+            cout << "Column is full, please try again.\n";
+        } 
         else 
         {
             return col;
         }
     }
+}
+
