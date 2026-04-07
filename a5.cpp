@@ -16,12 +16,12 @@
 // Help         : 
 // ------------------------
 //
-// All the code and comments below are my own original work. For any non-
-// original work, I have provided citations above and in the comments with
+// All the code and comments below are our own original work. For any non-
+// original work, we have provided citations above and in the comments with
 // enough detail so that someone can see the exact source and extent of the
 // borrowed work.
 //
-// In addition, I have not shared this work with anyone else, and I have not
+// In addition, we have not shared this work with anyone else, and we have not
 // seen solutions from other students, tutors, websites, books, etc.
 //
 /////////////////////////////////////////////////////////////////////////
