@@ -7,14 +7,8 @@
 
 using namespace std;
 
-const int ROWS = 6;
-const int COLS = 7;
 const int WIN_LEN = 4;
 const int MAX_DEPTH = 7;
-
-enum class Cell { Empty, player1, player2, anvil1, anvil2}; // Cell type
-
-using Board = vector<vector<Cell>>; // Board type
 
 // Check if the cell belongs to player (including anvil)
 bool is_player (Cell c, int player){
