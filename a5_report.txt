@@ -1,0 +1,34 @@
+# CMPT 125 Assignment 5
+
+## Names of Team Members
+
+ full names, SFU email addresses, and SFU student numbers of all team members
+
+## Platform and Tools
+
+what operating system(s) (e.g. Windows, macOS, Linux), compiler(s) (e.g. g++,
+clang++, etc.), and editor/IDE(s) (e.g. VS Code, Sublime Text, etc.) did you
+use?
+
+## Extra Features
+
+if your program has any extra or special features, tell us about them here
+
+## Limitations and Known Bugs
+
+list all known bugs here, including features that are missing or do not work as
+expected
+
+## Help and References
+
+what people and tools helped you; if you used AI, how did you use it?
+
+## Statement of Originality
+
+All the code and comments below are my (our) own original work. For any non-
+original work, I (we) have provided citations above and in the comments with
+enough detail so that someone can see the exact source and extent of the
+borrowed work.
+
+In addition, I (we) have not shared this work with anyone else, and I (we) have
+not seen solutions from other students, tutors, websites, books, etc.
