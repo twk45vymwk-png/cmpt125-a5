@@ -79,6 +79,14 @@ bool drop_anvil (Board& board, int col, int player){
     }
 }
 
+// Check if the cell belongs to player (including anvil)
+bool is_player (Cell c, int player){
+    if (player == 1){
+        return c == Cell::player1 || c == Cell::anvil1;
+    }
+    return c == Cell::player2 || c == Cell::anvil2;
+}
+
 // Check all four directions for a win by player
 bool win (const Board& board, int player){
     const int dr[] = {0,1,1,1};
@@ -121,13 +129,7 @@ bool board_full (const Board& board){
     return true;
 }
 
-// Check if the cell belongs to player (including anvil)
-bool is_player (Cell c, int player){
-    if (player == 1){
-        return c == Cell::player1 || c == Cell::anvil1;
-    }
-    return c == Cell::player2 || c == Cell::anvil2;
-}
+
 
 
 
