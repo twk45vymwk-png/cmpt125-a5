@@ -616,6 +616,7 @@ void gameSetup(string &name1, string &name2, bool &vsComputer, int &firstPlayer)
 //Game loop 
 void gameLoop(Board& board, string name1, string name2, bool vsComputer, int firstPlayer)
 {
+    bool p1_anvil = true, p2_anvil = true;  // track per-player
     int currentPlayer = firstPlayer;
 
     while (true)
@@ -626,16 +627,65 @@ void gameLoop(Board& board, string name1, string name2, bool vsComputer, int fir
         cout << currentName << "'s turn.\n";
 
         bool playedAnvil = false;
-        bool hasAnvil = true;
-        int col = getPlayerInput(board, hasAnvil, playedAnvil);
+        int col = -1;
+
+         // Computer turn
+        if (vsComputer && currentPlayer == 2)
+        {
+            int anvil_col = best_computer_anvil(board, 2, p2_anvil);
+            if (anvil_col != -1)
+            {
+                col = anvil_col;
+                playedAnvil = true;
+                p2_anvil = false;
+                cout << "Computer drops an anvil in column " << col + 1 << "!\n";
+            }
+            else
+            {
+                col = best_computer_move(board, 2);
+                cout << "Computer plays column " << col + 1 << ".\n";
+            }
+        }
+        // Human turn
+        else
+        {
+            bool hasAnvil = (currentPlayer == 1) ? p1_anvil : p2_anvil;
+            col = getPlayerInput(board, hasAnvil, playedAnvil);
+            if (playedAnvil)
+            {
+                if (currentPlayer == 1) p1_anvil = false;
+                else p2_anvil = false;
+            }
+        }
+
+        // Drop the piece
+        if (playedAnvil)
+            drop_anvil(board, col, currentPlayer);
+        else
+            drop(board, col, currentPlayer);
+
+        // Check win
+        if (win(board, currentPlayer))
+        {
+            printBoard(board);
+            string winner = (currentPlayer == 1) ? name1 : name2;
+            cout << winner << " wins!\n";
+            break;
+        }
+
+        // Check draw
+        if (board_full(board))
+        {
+            printBoard(board);
+            cout << "It's a draw!\n";
+            break;
+        }
 
         currentPlayer = (currentPlayer == 1) ? 2 : 1;
     }
 
     // add drop piece and check win
-    
-    // switch player
-    currentPlayer = (currentPlayer == 1) ? 2 : 1;
+
 
 // Play again loop:
 
