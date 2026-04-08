@@ -3,6 +3,7 @@
 ## Names of Team Members
 
 Alyssa Crossan, aca416@sfu.ca, 301653408
+Hoang Mai Tran, hmt9@sfu.ca, 301644559
  
 full names, SFU email addresses, and SFU student numbers of all team members
 
@@ -30,8 +31,10 @@ what people and tools helped you; if you used AI, how did you use it?
 - help debug with combine and bool drop
 - for the random function, used help for cstdlib and ctime
 - stoi for using a for anvil option simultaneously with 1 or 2 option 
-- limits for positive negative and infinite
+- limits for positive infinite and negative infinite
 - watched tutorials and had to learn how to github
+- watched Youtube tutorials and had to learn for minimax algorithm: https://www.youtube.com/watch?v=l-hh51ncgDI&t=2s
+- watch Youtube tutorials for Enums: https://www.youtube.com/watch?v=Fqn4pSRH6Ec
 
 ## Statement of Originality
 
