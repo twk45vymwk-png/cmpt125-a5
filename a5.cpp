@@ -1,3 +1,4 @@
+
 // a5.cpp
 
 #include <iostream>
@@ -384,31 +385,33 @@ string getPieceRow(Cell cell, int line)
 {
     if (cell == Cell::player1)
     {
-        return "|xxx";
+        return "|🅾️🅾️🅾️🅾️🅾️🅾️";
     }
     else if (cell == Cell::player2)
     {
-        return "|yyy";
+        return "|❎❎❎";
     }
     else if (cell == Cell::anvil1 || cell == Cell::anvil2)
     {
-        if (line == 1) return "|xAx";
-        else           return "|xxx";
+        if (line == 1) return "|🔩🔩🔩";
+        else           return "|🔩🔩🔩";
     }
     else
     {
-        return "|...";
+        return "|. .  .";
     }
 }
 
 void printBoard(const Board& board)
 {
-    cout << "\n  1   2   3   4   5   6   7\n";
+    cout << "\n    1      2      3      4      5     6       7 \n";
 
     for (int row = 0; row < ROWS; row++)
     {
         for (int line = 0; line < 3; line++)
         {
+            if (line == 1
+            )
             for (int col = 0; col < COLS; col++)
             {
                 cout << getPieceRow(board[row][col], line);
