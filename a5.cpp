@@ -404,12 +404,21 @@ string getPieceRow(Cell cell, int line)
 
 void printBoard(const Board& board)
 {
-    cout << "\n    1      2      3      4      5     6       7 \n";
+    cout << "\n         1      2      3      4      5     6       7 \n";
 
     for (int row = 0; row < ROWS; row++)
     {
         for (int line = 0; line < 3; line++)
         {
+            if (line == 1)
+            {
+                cout << "   " << (ROWS - row ) << " ";
+            } 
+            else
+            {
+                 cout << "     ";  
+            }
+
             for (int col = 0; col < COLS; col++)
             {
                 cout << getPieceRow(board[row][col], line);
