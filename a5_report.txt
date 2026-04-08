@@ -2,17 +2,21 @@
 
 ## Names of Team Members
 
- full names, SFU email addresses, and SFU student numbers of all team members
+Alyssa Crossan, aca416@sfu.ca, 301653408
+ 
+full names, SFU email addresses, and SFU student numbers of all team members
 
 ## Platform and Tools
 
-what operating system(s) (e.g. Windows, macOS, Linux), compiler(s) (e.g. g++,
-clang++, etc.), and editor/IDE(s) (e.g. VS Code, Sublime Text, etc.) did you
-use?
+Platform/Compilers: macOS / clang++
+Collab REPL: Github
+Editor: VS Code
 
 ## Extra Features
 
 if your program has any extra or special features, tell us about them here
+- main menu has instructions
+- (maybe) add quit button if have time
 
 ## Limitations and Known Bugs
 
@@ -22,6 +26,12 @@ expected
 ## Help and References
 
 what people and tools helped you; if you used AI, how did you use it?
+- used claude to delegate work between us and to structure code back together
+- help debug with combine and bool drop
+- for the random function, used help for cstdlib and ctime
+- stoi for using a for anvil option simultaneously with 1 or 2 option 
+- limits for positive negative and infinite
+- watched tutorials and had to learn how to github
 
 ## Statement of Originality
 
