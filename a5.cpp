@@ -410,8 +410,6 @@ void printBoard(const Board& board)
     {
         for (int line = 0; line < 3; line++)
         {
-            if (line == 1
-            )
             for (int col = 0; col < COLS; col++)
             {
                 cout << getPieceRow(board[row][col], line);
