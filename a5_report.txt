@@ -4,8 +4,6 @@
 
 Alyssa Crossan, aca416@sfu.ca, 301653408
 Hoang Mai Tran, hmt9@sfu.ca, 301644559
- 
-full names, SFU email addresses, and SFU student numbers of all team members
 
 ## Platform and Tools
 
@@ -14,33 +12,26 @@ Collab REPL: Github
 Editor: VS Code
 
 ## Extra Features
-
-if your program has any extra or special features, tell us about them here
-
-- The program includes a main menu with instructions to guide the user before starting the game.
-- (Planned) A quit option may be added if time permits.
-- If player tries to drop an anvil onto the full column , the game makes you try again on another column
+- Alpha-beta pruning in Minimax algorithm
+- Emojis as game pieces
+- Named Players throughout the game
+- Smart anvil AI (3-scenario decision making)
+- Row and column numbers on the board for easy reference
+- Anvil is preserved on invalid drop
 
 ## Limitations and Known Bugs
-
-list all known bugs here, including features that are missing or do not work as
-expected
-
-- The anvil cannot be placed in a full column, but it may still be consumed even when the move is invalid.
-- The quit feature is not fully implemented, need to kill terminal to exit program.
+- The quit feature is not available, the program must be exited by closing the terminal. 
 
 ## Help and References
-
-what people and tools helped you; if you used AI, how did you use it?
-- Used claude to delegate work between us and to structure code back together.
-- Help debug with combine and bool drop.
-- For the random function, used help for cstdlib and ctime.
-- Stoi for using a for anvil option simultaneously with 1 or 2 option.
-- Limits for positive infinite and negative infinite.
-- Watched tutorials and had to learn how to github.
-- Watched Youtube tutorials and had to learn for minimax algorithm: https://www.youtube.com/watch?v=l-hh51ncgDI&t=2s .
-- Watch Youtube tutorials for Enums: https://www.youtube.com/watch?v=Fqn4pSRH6Ec .
-- Asked TA and professor to clarify the appearance (3x3 or 1x1) of the board, and how the pieces look like.
+- Used Claude.ai to help identify and debug issues during development (e.g. the drop function and boolean logic)
+- Used Claude.ai to help structure and integrate code when combining work between partners
+- Referenced cstdlib and ctime documentation for the random first-player feature
+- Looked up stoi for parsing string input to handle both column numbers and the 'a' anvil option
+- Used <limits> for numeric_limits<int>::min/max() in the minimax algorithm
+- Watched YouTube tutorial on the minimax algorithm: https://www.youtube.com/watch?v=l-hh51ncgDI
+- Watched YouTube tutorial on enums in C++: https://www.youtube.com/watch?v=Fqn4pSRH6Ec
+- Asked TA and professor to clarify board appearance requirements (3x3 pieces)
+- Learned Git/GitHub for collaboration between partners
 
 ## Statement of Originality
 
