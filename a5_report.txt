@@ -16,25 +16,31 @@ Editor: VS Code
 ## Extra Features
 
 if your program has any extra or special features, tell us about them here
-- main menu has instructions
-- (maybe) add quit button if have time
+
+- The program includes a main menu with instructions to guide the user before starting the game.
+- (Planned) A quit option may be added if time permits.
+- If player tries to drop an anvil onto the full column , the game makes you try again on another column
 
 ## Limitations and Known Bugs
 
 list all known bugs here, including features that are missing or do not work as
 expected
 
+- The anvil cannot be placed in a full column, but it may still be consumed even when the move is invalid.
+- The quit feature is not fully implemented, need to kill terminal to exit program.
+
 ## Help and References
 
 what people and tools helped you; if you used AI, how did you use it?
-- used claude to delegate work between us and to structure code back together
-- help debug with combine and bool drop
-- for the random function, used help for cstdlib and ctime
-- stoi for using a for anvil option simultaneously with 1 or 2 option 
-- limits for positive infinite and negative infinite
-- watched tutorials and had to learn how to github
-- watched Youtube tutorials and had to learn for minimax algorithm: https://www.youtube.com/watch?v=l-hh51ncgDI&t=2s
-- watch Youtube tutorials for Enums: https://www.youtube.com/watch?v=Fqn4pSRH6Ec
+- Used claude to delegate work between us and to structure code back together.
+- Help debug with combine and bool drop.
+- For the random function, used help for cstdlib and ctime.
+- Stoi for using a for anvil option simultaneously with 1 or 2 option.
+- Limits for positive infinite and negative infinite.
+- Watched tutorials and had to learn how to github.
+- Watched Youtube tutorials and had to learn for minimax algorithm: https://www.youtube.com/watch?v=l-hh51ncgDI&t=2s .
+- Watch Youtube tutorials for Enums: https://www.youtube.com/watch?v=Fqn4pSRH6Ec .
+- Asked TA and professor to clarify the appearance (3x3 or 1x1) of the board, and how the pieces look like.
 
 ## Statement of Originality
 
