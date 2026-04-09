@@ -471,13 +471,20 @@ int getPlayerInput(const Board& board, bool hasAnvil, bool &playedAnvil)
 
         catch (...) {
             cout << "Invalid input, please try again.\n";
+            playedAnvil = false;
             continue;
         }
 
         if (col < 0 || col > 6) 
         {
             cout << "Invalid input, please try again.\n";
+            playedAnvil = false;
         } 
+        else if (playedAnvil && col_full(board,col))
+        {
+            cout << "Cannot drop an anvil in a full column, please try again.\n";
+            playedAnvil = false; 
+        }
         else if (!playedAnvil && board[0][col] != Cell::Empty) 
         {
             cout << "Column is full, please try again.\n";
