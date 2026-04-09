@@ -395,10 +395,17 @@ string getPieceRow(Cell cell, int line)
         if (line == 2) return "|. ❌ .";
         if (line == 3) return "|❌..❌";
     }
-    else if (cell == Cell::anvil1 || cell == Cell::anvil2)
+    else if (cell == Cell::anvil1)
     {
-        if (line == 1) return "|🔩🔩🔩";
-        else           return "|🔩🔩🔩";
+        if (line == 1) return "|🌀🌀🌀";
+        if (line == 2) return "|🌀🔩🌀";
+        if (line == 3) return "|🌀🌀🌀";
+    }
+    else if (cell == Cell::anvil2)
+    {
+        if (line == 1) return "|❌❌❌";
+        if (line == 2) return "|❌🔩❌";
+        if (line == 3) return "|❌❌❌";
     }
     else
     {
@@ -496,7 +503,7 @@ int getPlayerInput(const Board& board, bool hasAnvil, bool &playedAnvil)
     }
 }
 
-// Game display , Main menu
+// Game display (title screen, )
 
 void printTitleScreen()
 {
@@ -650,7 +657,7 @@ void gameLoop(Board& board, string name1, string name2, bool vsComputer, int fir
         bool playedAnvil = false;
         int col = -1;
 
-// Computer turn
+         // Computer turn
         if (vsComputer && currentPlayer == 2)
         {
             int anvil_col = best_computer_anvil(board, 2, p2_anvil);
@@ -667,7 +674,7 @@ void gameLoop(Board& board, string name1, string name2, bool vsComputer, int fir
                 cout << "Computer plays column " << col + 1 << ".\n";
             }
         }
-// Human turn
+        // Human turn
         else
         {
             bool hasAnvil = (currentPlayer == 1) ? p1_anvil : p2_anvil;
@@ -679,7 +686,7 @@ void gameLoop(Board& board, string name1, string name2, bool vsComputer, int fir
             }
         }
 
-// Drop the piece
+        // Drop the piece
         if (playedAnvil)
             drop_anvil(board, col, currentPlayer);
         else
@@ -704,7 +711,7 @@ void gameLoop(Board& board, string name1, string name2, bool vsComputer, int fir
 
         currentPlayer = (currentPlayer == 1) ? 2 : 1;
     }
-    
+
 // Play again loop:
 
     while (true) 
