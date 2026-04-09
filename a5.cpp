@@ -433,7 +433,7 @@ void printBoard(const Board& board)
 }
 
 // Input and Validation
-// Help --> lookd up info about stoi and was recommended to use
+// Help --> looked up info about stoi and was recommended to use
 
 int getPlayerInput(const Board& board, bool hasAnvil, bool &playedAnvil)
 {
@@ -496,7 +496,7 @@ int getPlayerInput(const Board& board, bool hasAnvil, bool &playedAnvil)
     }
 }
 
-// Game display (title screen, )
+// Game display , Main menu
 
 void printTitleScreen()
 {
@@ -650,7 +650,7 @@ void gameLoop(Board& board, string name1, string name2, bool vsComputer, int fir
         bool playedAnvil = false;
         int col = -1;
 
-         // Computer turn
+// Computer turn
         if (vsComputer && currentPlayer == 2)
         {
             int anvil_col = best_computer_anvil(board, 2, p2_anvil);
@@ -667,7 +667,7 @@ void gameLoop(Board& board, string name1, string name2, bool vsComputer, int fir
                 cout << "Computer plays column " << col + 1 << ".\n";
             }
         }
-        // Human turn
+// Human turn
         else
         {
             bool hasAnvil = (currentPlayer == 1) ? p1_anvil : p2_anvil;
@@ -679,7 +679,7 @@ void gameLoop(Board& board, string name1, string name2, bool vsComputer, int fir
             }
         }
 
-        // Drop the piece
+// Drop the piece
         if (playedAnvil)
             drop_anvil(board, col, currentPlayer);
         else
@@ -704,9 +704,6 @@ void gameLoop(Board& board, string name1, string name2, bool vsComputer, int fir
 
         currentPlayer = (currentPlayer == 1) ? 2 : 1;
     }
-
-    // add drop piece and check win
-
 
 // Play again loop:
 
