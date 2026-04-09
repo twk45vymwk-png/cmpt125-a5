@@ -694,9 +694,6 @@ void gameLoop(Board& board, string name1, string name2, bool vsComputer, int fir
         currentPlayer = (currentPlayer == 1) ? 2 : 1;
     }
 
-    // add drop piece and check win
-
-
 // Play again loop:
 
     while (true) 
