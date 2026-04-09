@@ -21,6 +21,7 @@ Editor: VS Code
 
 ## Limitations and Known Bugs
 - The quit feature is not available, the program must be exited by closing the terminal. 
+- Restricted to single character names 
 
 ## Help and References
 - Used Claude.ai to help identify and debug issues during development (e.g. the drop function and boolean logic)
